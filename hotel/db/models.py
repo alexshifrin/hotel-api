@@ -7,7 +7,7 @@ Base = declarative_base()
 
 
 class DBCustomer(Base):
-    __tablename___ = "customer"
+    __tablename__ = "customer"
     id = Column(Integer, primary_key=True, autoincrement=True)
     first_name = Column(String(250), nullable=False)
     last_name = Column(String(250), nullable=False)
@@ -15,7 +15,7 @@ class DBCustomer(Base):
 
 
 class DBRoom(Base):
-    __tablename___ = "room"
+    __tablename__ = "room"
     id = Column(Integer, primary_key=True, autoincrement=True)
     number = Column(String(250), nullable=False)
     size = Column(Integer, nullable=False)
@@ -23,7 +23,7 @@ class DBRoom(Base):
 
 
 class DBBooking(Base):
-    __tablename___ = "booking"
+    __tablename__ = "booking"
     id = Column(Integer, primary_key=True, autoincrement=True)
     from_date = Column(Date, nullable=False)
     to_date = Column(Date, nullable=False)
