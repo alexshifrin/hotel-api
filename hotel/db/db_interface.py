@@ -13,12 +13,12 @@ class DBInterface:
     def read_by_id(self, id: int) -> DataObject:
         session = DBSession()
         result = session.query(self.db_class).get(id)
-        return result.dict()
+        return result.__dict__
     
     def read_all(self) -> List[DataObject]:
         session = DBSession()
         results = session.query(self.db_class).all()
-        return [r.dict() for r in results]
+        return [r.__dict__ for r in results]
 
     def create(self, data: DataObject) -> DataObject:
         session = DBSession()
@@ -26,7 +26,7 @@ class DBInterface:
         session.add(result)
         session.commit()
         session.refresh(result)
-        return result.dict()
+        return result.__dict__
 
     def update(self, id: int, data: DataObject) -> DataObject:
         session = DBSession()
@@ -35,11 +35,12 @@ class DBInterface:
             setattr(result, key, value)
         session.commit()
         session.refresh(result)
-        return result.dict()
-    
+        return result.__dict__
+
     def delete(self, id: int) -> DataObject:
         session = DBSession()
         result = session.query(self.db_class).get(id)
         session.delete(result)
         session.commit()
-        return result.dict()
+        return result.__dict__
+        
